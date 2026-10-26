@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Cool Car Guy Redesign: Sample by Aysh</title><link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;800&family=Instrument+Sans:wght@400;500;700&display=swap" rel="stylesheet"><style>
+:root{--blue:#2433ff;--org:#ff5a1f;--mint:#9df5c8;--chalk:#f4f1ea;--ink:#0d1030;--card:#ffffff;--mut:#5a5f80;--line:#dcd8cc;color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--chalk:#10122b;--ink:#f1efe8;--card:#191c3d;--mut:#a3a8d0;--line:#2b2f5c}}
+:root[data-theme="dark"]{--chalk:#10122b;--ink:#f1efe8;--card:#191c3d;--mut:#a3a8d0;--line:#2b2f5c}
+*{box-sizing:border-box;margin:0}
+body{background:var(--chalk);color:var(--ink);font:400 17px/1.5 'Instrument Sans',system-ui,sans-serif}
+h1,h2,h3,.u{font-family:'Unbounded','Arial Black',sans-serif;letter-spacing:-.03em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+a{color:inherit}:focus-visible{outline:3px solid var(--org);outline-offset:3px}
+.nav{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px;align-items:center;padding:7px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(18px) saturate(1.6);-webkit-backdrop-filter:blur(18px) saturate(1.6);border:1px solid rgba(255,255,255,.35);color:#fff;white-space:nowrap}
+.nav a{text-decoration:none;font-size:14px;font-weight:500;padding:9px 14px;border-radius:999px}
+.nav a.pri{background:var(--org)}
+.nav b{font:800 14px 'Unbounded';padding:0 12px}
+.hero{background:var(--blue);color:#f4f1ea;position:relative;overflow:hidden;padding:130px 0 0;border-radius:0 0 44px 44px}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,#6a5bff,transparent 45%),radial-gradient(circle at 10% 90%,#ff5a1f55,transparent 40%);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(46px,10.5vw,148px);line-height:.92;font-weight:800;text-transform:uppercase}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.15s;color:var(--mint)}
+.hero h1 span:nth-child(3) i{animation-delay:.3s}
+@keyframes up{to{transform:none}}
+.ask{position:relative;margin:34px 0 14px;max-width:720px;background:#fff;border-radius:22px;padding:8px;display:flex;gap:8px;box-shadow:0 24px 60px rgba(5,10,90,.45)}
+.ask input{flex:1;min-width:0;border:0;font:500 18px 'Instrument Sans';padding:0 16px;color:#0d1030;background:transparent}
+.ask input:focus{outline:none}
+.btn{display:inline-block;background:var(--org);color:#fff;font:700 15px 'Instrument Sans';padding:14px 24px;border-radius:14px;border:0;text-decoration:none;cursor:pointer}
+.sug{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+.sug button{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.3);font:500 14px 'Instrument Sans';padding:7px 14px;border-radius:99px;cursor:pointer}
+.herocar{position:relative;margin:30px -20px 0;height:clamp(150px,26vw,300px)}
+.herocar svg{position:absolute;bottom:-4px;left:50%;width:min(90%,820px);transform:translateX(-50%);color:var(--org);transition:transform .2s}
+.mq{overflow:hidden;background:var(--ink);color:var(--chalk);padding:14px 0;margin-top:-1px;border-radius:0}
+.mq div{display:flex;gap:44px;width:max-content;animation:mq 38s linear infinite;font:800 18px 'Unbounded';text-transform:uppercase}
+.mq span:nth-child(odd){color:var(--mint)}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:80px 0 10px}
+h2{font-size:clamp(30px,5vw,60px);line-height:1;font-weight:800;margin-bottom:12px}
+.lede{color:var(--mut);max-width:56ch}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:minmax(120px,auto);gap:14px;margin-top:30px}
+.t{border-radius:28px;padding:24px;position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line)}
+.t h3{font-size:22px;line-height:1.05;margin-bottom:8px}
+.t p{color:inherit;opacity:.8;font-size:15px}
+.a{grid-column:span 7;grid-row:span 3;background:var(--org);color:#fff;border:0}
+.b{grid-column:span 5;grid-row:span 2;background:var(--ink);color:var(--chalk);border:0}
+.c{grid-column:span 5}
+.d{grid-column:span 4;grid-row:span 2;background:var(--mint);color:#0d1030;border:0}
+.e{grid-column:span 4;grid-row:span 2}
+.f{grid-column:span 4;grid-row:span 2;background:var(--blue);color:#fff;border:0}
+.big{font:800 clamp(54px,8vw,110px)/.9 'Unbounded';letter-spacing:-.05em}
+.t svg{position:absolute;right:-30px;bottom:-12px;width:78%;color:#fff;opacity:.95}
+.a svg{color:#0d1030}
+.cnt{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cnt b{display:block;font:800 36px 'Unbounded';color:var(--mint)}
+.cnt span{font-size:13px;opacity:.8}
+.bars{display:flex;align-items:flex-end;gap:6px;height:110px;margin-top:10px}
+.bars i{flex:1;background:#0d1030;border-radius:8px 8px 0 0;display:block}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 18px;align-items:center}
+.chip,.sort{border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:500 14px 'Instrument Sans';padding:9px 16px;border-radius:99px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.sort{margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;transition:transform .15s;will-change:transform}
+.ph{height:170px;position:relative;display:flex;align-items:flex-end;justify-content:center}
+.ph svg{width:84%;margin-bottom:-6px}
+.tag{position:absolute;left:12px;top:12px;font:700 12px 'Instrument Sans';background:rgba(255,255,255,.92);color:#0d1030;padding:4px 11px;border-radius:99px}
+.heart{position:absolute;right:10px;top:8px;background:rgba(255,255,255,.92);border:0;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px}
+.card .b2{padding:14px 18px 18px}
+.card h3{font-size:16px;line-height:1.15;margin-bottom:8px}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:14px}
+.price{font:800 17px 'Unbounded';color:var(--org)}
+.spec{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.spec i{font:500 12px 'Instrument Sans';font-style:normal;border:1px solid var(--line);border-radius:99px;padding:3px 10px;color:var(--mut)}
+.gar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:26px}
+.gar div{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;display:flex;gap:14px;align-items:center}
+.av{width:54px;height:54px;border-radius:50%;flex:none;display:grid;place-items:center;font:800 18px 'Unbounded';color:#fff}
+.gar b{display:block}.gar small{color:var(--mut)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:26px}
+.steps div{border-top:4px solid var(--org);padding-top:14px}
+.steps b{font:800 54px/1 'Unbounded';color:var(--blue)}
+.price2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.pt{border-radius:32px;padding:34px}
+.pt.m{background:var(--ink);color:var(--chalk)}
+.pt.m .big{color:var(--org)}
+.pt.n{background:var(--mint);color:#0d1030}
+.tiers{display:flex;align-items:flex-end;gap:8px;height:150px;margin-top:20px}
+.tiers div{flex:1;background:#0d1030;color:#9df5c8;border-radius:12px 12px 0 0;font:800 20px 'Unbounded';padding:10px 6px;text-align:center}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font:500 18px 'Unbounded';list-style:none}
+details p{color:var(--mut);margin-top:10px;max-width:60ch}
+.end{background:var(--blue);color:#fff;border-radius:44px 44px 0 0;text-align:center;padding:90px 20px;margin-top:80px}
+.end h2{font-size:clamp(40px,9vw,120px);text-transform:uppercase;max-width:10ch;margin:0 auto 26px}
+.foot{font-size:13px;opacity:.7;margin-top:30px}
+@media(max-width:860px){.a,.b,.c,.d,.e,.f{grid-column:span 12}.nav a:not(.pri){display:none}.price2{grid-template-columns:1fr}.sort{margin-left:0}}
+@media(prefers-reduced-motion:reduce){.hero h1 span i{animation:none;transform:none}.mq div{animation:none}.card{transition:none}}
+.kick{position:relative;font:500 15px 'Instrument Sans';opacity:.85;margin-bottom:14px}
+.sub{position:relative;max-width:60ch;margin-top:22px;font-size:19px;opacity:.92}
+.himg{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:min(94%,900px);height:100%;object-fit:cover;border-radius:28px 28px 0 0;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.t.img,.t.img2{color:#fff}
+.t.img>img,.t.img2>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,16,48,.1),rgba(13,16,48,.82))}
+.t.img>*:not(img):not(.shade),.t.img2>*:not(img):not(.shade){position:relative}
+.t.a.img{background:var(--org)}
+.t.e.img2{background:var(--blue);color:#fff;display:flex;flex-direction:column;justify-content:flex-end}
+.cats{list-style:none;padding:0;margin:12px 0 18px;display:grid;gap:7px;font-weight:500}
+.d .cats{font-size:15px}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:28px}
+.three figure img{width:100%;height:220px;object-fit:cover;border-radius:24px;display:block;background:var(--line)}
+.three h3{font-size:24px;margin:14px 0 6px}.three p{color:var(--mut)}
+.gt{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:26px}
+.gt a{text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;padding-bottom:18px;display:block}
+.gt img{width:100%;height:190px;object-fit:cover;display:block;background:var(--line)}
+.gt h3{font-size:18px;line-height:1.15;padding:16px 18px 0}.gt p{padding:8px 18px 0;color:var(--mut);font-size:15px}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+.ph .tag,.ph .heart{z-index:2}
+.card h3 a{text-decoration:none}
+.tiers.wide{max-width:640px;height:180px}
+.flinks{display:flex;gap:10px 20px;flex-wrap:wrap;justify-content:center;margin-top:34px;font-size:14px}
+.flinks a{opacity:.85}
+.t.d{background:#262a40;color:#fff;border:0}
+.t.d p{margin-bottom:6px}
+.lot{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;margin-top:18px;padding-top:6px;background:repeating-linear-gradient(90deg,transparent 0 0)}
+.bay{position:relative;height:124px;margin-bottom:12px;border:3px solid rgba(255,255,255,.88);border-bottom:0;border-radius:4px 4px 0 0;padding:9px 8px;overflow:hidden}
+.bay .nm{position:relative;z-index:1;display:block;font:600 13px/1.2 'Instrument Sans';letter-spacing:.01em}
+.bay.on{border-color:#ffd23f}
+.bay svg{position:absolute;left:50%;bottom:-8px;width:92%;transform:translateX(-50%)}
+.bay .p{position:absolute;left:0;right:0;bottom:6px;text-align:center;font:800 44px 'Unbounded';color:rgba(255,255,255,.22)}
+.curb{margin-top:6px;padding:8px 12px;border-radius:10px;background:repeating-linear-gradient(45deg,#ffd23f 0 14px,#262a40 14px 28px);color:#262a40;font:800 12px 'Unbounded';text-align:center}
+.curb{background:#ffd23f}
+@media(min-width:861px){.lot{grid-template-columns:1fr 1fr 1fr}}
+.bay{height:auto;min-height:190px;display:flex;flex-direction:column;padding:10px 10px 12px;overflow:visible}
+.bay .nm{font:700 14px/1.2 'Instrument Sans';margin-bottom:6px}
+.bay .ds{display:block;font-size:12.5px;line-height:1.35;opacity:.8}
+.bay .bt{margin-top:auto;padding-top:12px;display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.bay .bt svg{position:static;transform:none;width:68%;max-width:130px;margin:0}
+.bay .bt .p{position:static;font:800 30px/1 'Unbounded';color:rgba(255,255,255,.35);text-align:left}
+.bay .bt em{font:700 11px 'Instrument Sans';font-style:normal;background:rgba(255,255,255,.14);padding:3px 9px;border-radius:99px;white-space:nowrap}
+.bay.on .bt em{background:#ffd23f;color:#262a40}
+/* dark-mode and mobile fixes */
+.t.b,.pt.m{background:#0d1030;color:#f4f1ea;border:1px solid rgba(255,255,255,.16)}
+.mq{background:#0d1030;color:#f4f1ea;border-top:1px solid rgba(255,255,255,.16);border-bottom:1px solid rgba(255,255,255,.16)}
+.tiers.wide div{background:var(--org);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.2) inset}
+.hero h1 span{padding-bottom:.08em}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .steps b{color:#9aa5ff}}
+:root[data-theme="dark"] .steps b{color:#9aa5ff}
+@media(max-width:860px){.nav a[href="#feed"]{display:inline-block}}
+.end{padding-bottom:160px!important}</style></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="car" viewBox="0 0 420 130"><path d="M12 92c0-12 8-20 24-24l70-16c18-14 46-24 82-24h46c32 0 60 12 80 32l56 12c22 5 34 14 34 28v6c0 6-4 10-10 10h-20a42 42 0 0 0-84 0H152a42 42 0 0 0-84 0H22c-6 0-10-4-10-10z" fill="currentColor"/><path d="M130 54c14-10 34-18 62-18h40l36 28H118z" fill="#0d1030" opacity=".8"/><circle cx="110" cy="102" r="27" fill="#0d1030"/><circle cx="110" cy="102" r="11" fill="#c9d1e6"/><circle cx="318" cy="102" r="27" fill="#0d1030"/><circle cx="318" cy="102" r="11" fill="#c9d1e6"/></symbol></svg><nav class="nav" aria-label="Main"><b>CCG</b><a href="#feed">Explore</a><a href="#price">Advertise</a><a href="#earn">Earn</a><a href="#talk">Garage Talk</a><a class="pri" href="#price">Grab a spot</a></nav>
+<header class="hero"><div class="wrap">
+<p class="kick">The Cool Car Guy presents</p>
+<h1><span><i>The world of cool cars</i></span><span><i>is too big for</i></span><span><i>one garage.</i></span></h1>
+<p class="sub">I think the whole thing is really cool. The cars, the people, the stories and the occasional terrible decision with four wheels attached. So I built an entire Island around it.</p>
+<form class="ask" id="ask"><input id="q" type="search" placeholder="Try Tupac, Porsche, rally…" aria-label="Search the Island"><button class="btn" type="submit">Search</button></form>
+<div class="sug" id="sug"></div>
+<div class="herocar" id="hc"><svg viewBox="0 0 420 130" aria-hidden="true"><use href="#car"/></svg><img class="himg" src="https://www.coolcarguy.com/wp-content/uploads/2025/10/Future_Hellcat.jpg" alt="" onerror="this.remove()"></div>
+</div></header>
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+
+<section><div class="wrap"><h2>Cool cars are way too big for a classified site</h2><p class="lede">Cars for sale are part of this world. They are nowhere close to the whole thing. Collectors, racers, builders, YouTubers, dealers, auction companies, clubs and shops, all in one searchable Island.</p>
+<div class="bento">
+<div class="t a img"><img src="https://www.coolcarguy.com/wp-content/uploads/2026/08/Macan.17.jpeg" alt="" onerror="this.remove()"><div class="shade"></div><h3>Showcase Only</h3><div class="big">$74K<br>→ ~$40K</div><p style="max-width:30ch;margin-top:10px">I found my wife a $74,000 Porsche for around $40,000. Getting it home was the hard part.</p></div>
+<div class="t b"><h3>The $7 Parking Spot</h3><div class="cnt"><div><b data-n="25">0</b><span>photos</span></div><div><b data-n="2">0</b><span>embedded videos</span></div><div><b data-n="30000">0</b><span>characters of story</span></div><div><b data-n="7" data-p="$">0</b><span>one time, no renewal</span></div></div></div>
+<div class="t c"><h3>One keyword. Done.</h3><p>The Cool Car Guy typed “Tupac” and found his $1.75 million BMW 7 Series Parking Spot in seconds.</p></div>
+<div class="t d"><h3>Six places to park</h3><p>Pick the stall that fits. Yellow stalls have cars parked in them, white stalls are open.</p><div class="lot"><div class="bay on"><b class="nm">🎥 Creators &amp; Storytellers</b><span class="ds">Videos, reviews, opinions, stories, discoveries and people creating interesting automotive content.</span><div class="bt"><svg viewBox="0 0 420 130" style="color:#2433ff" aria-hidden="true"><use href="#car"/></svg><em>6 spots parked</em></div></div><div class="bay"><b class="nm">💰 For Sale</b><span class="ds">Cool cars, automotive products, services and other things offered for sale.</span><div class="bt"><span class="p" aria-hidden="true">P</span><em>Open stall</em></div></div><div class="bay"><b class="nm">💬 Make Offer</b><span class="ds">Vehicles and automotive things that might move for the right number.</span><div class="bt"><span class="p" aria-hidden="true">P</span><em>Open stall</em></div></div><div class="bay"><b class="nm">🔄 Exchange</b><span class="ds">Trades, swaps and automotive exchanges.</span><div class="bt"><span class="p" aria-hidden="true">P</span><em>Open stall</em></div></div><div class="bay on"><b class="nm">📸 Showcase Only</b><span class="ds">Cars, collections, restorations and projects that aren't for sale at all.</span><div class="bt"><svg viewBox="0 0 420 130" style="color:#ff5a1f" aria-hidden="true"><use href="#car"/></svg><em>1 spot parked</em></div></div><div class="bay"><b class="nm">📅 Events &amp; Experiences</b><span class="ds">Car shows, auctions, races, road trips and memorable automotive experiences.</span><div class="bt"><span class="p" aria-hidden="true">P</span><em>Open stall</em></div></div></div><div class="curb">Island entrance</div></div>
+<div class="t e img2"><img src="https://www.coolcarguy.com/wp-content/uploads/2025/10/CoolCarGuy_Porsche.jpeg" alt="" onerror="this.remove()"><div class="shade"></div><h3>Welcome to the Island</h3><p>Whatever is cool to you.</p></div>
+<div class="t f"><h3>Build a Garage</h3><p>One Parking Spot is a page. Your Garage is your channel. Make it completely different from mine.</p></div>
+</div></div></section>
+
+<section><div class="wrap"><h2>Three things make this world interesting</h2>
+<div class="three">
+<figure><img src="https://www.coolcarguy.com/wp-content/uploads/2025/10/CoolCarGuy_Porsche.jpeg" alt="" onerror="this.remove()"><h3>The machines</h3><p>Classics. Exotics. Muscle. Sports cars. Race cars. Tuners. Trucks. Restomods. Movie cars. If it is interesting, I want to know why.</p></figure>
+<figure><img src="https://www.coolcarguy.com/wp-content/uploads/2025/10/SilentGarage_Mustang.jpg" alt="" onerror="this.remove()"><h3>The people</h3><p>Owners, collectors, racers, builders, creators, dealers, photographers, mechanics and event promoters.</p></figure>
+<figure><img src="https://www.coolcarguy.com/wp-content/uploads/2025/01/Hellcat.1.jpeg" alt="" onerror="this.remove()"><h3>The stories</h3><p>Auctions. Road trips. Racing. History. Market insanity. Restorations. Bad purchases. Great finds.</p></figure>
+</div></div></section>
+
+<section id="feed"><div class="wrap"><h2>Recently parked</h2><p class="lede">Cars, stories, videos, businesses and opinions that deserved a Parking Spot. Real listings from coolcarguy.com.</p>
+<div class="tools" id="tools"><select class="sort" id="sort" aria-label="Sort"><option value="new">Newest</option><option value="az">A to Z</option></select></div>
+<div class="grid" id="grid"></div></div></section>
+
+<section id="talk"><div class="wrap"><h2>Garage Talk</h2><p class="lede">Cars, auctions, racing, dealers, road trips and bad decisions.</p>
+<div class="gt">
+<a class="ext" href="https://www.coolcarguy.com/how-the-island-pays-you/"><img src="https://www.coolcarguy.com/wp-content/uploads/2026/08/HowItPays.jpg" alt="" onerror="this.remove()"><h3>How This Island Of Cool Cars Pays You</h3></a>
+<a class="ext" href="https://www.coolcarguy.com/when-one-creator-with-a-pink-jeep-brings-her-audience-to-the-island/"><img src="https://www.coolcarguy.com/wp-content/uploads/2025/12/PinkJeep.1.jpg" alt="" onerror="this.remove()"><h3>When One Creator With A Pink Jeep Brings Her Audience To The Island</h3><p>Cool cars, compounding visibility, and what happens when a story refuses to disappear.</p></a>
+<a class="ext" href="https://www.coolcarguy.com/coolcarguy-com-doesnt-need-your-listing-why-you-should-want-to-list-here/"><img src="https://www.coolcarguy.com/wp-content/uploads/2025/10/CarsFreak_Ad.2.jpeg" alt="" onerror="this.remove()"><h3>CoolCarGuy.com Doesn’t Need Your Listing. Why You Should Want To List Here</h3></a>
+</div></div></section>
+
+<section><div class="wrap"><h2>Park it in three steps</h2>
+<div class="steps"><div><b>1</b><h3>Grab a spot</h3><p>Click Grab A Spot and choose the category that fits.</p></div><div><b>2</b><h3>Build the page</h3><p>Add photos, writing, videos, links and what you want somebody to do next.</p></div><div><b>3</b><h3>Get found</h3><p>Your own URL, a public view counter and a place inside the searchable Island.</p></div></div></div></section>
+
+<section id="price"><div class="wrap"><h2>The meter doesn’t keep running</h2>
+<div class="price2"><div class="pt m"><div class="big">$7</div><h3 style="margin:10px 0">Parking Spot</h3><p>One time. No subscription, no scheduled renewal, no scheduled expiration.</p><ul class="cats"><li>Up to 25 photos</li><li>Up to two supported embedded videos</li><li>Up to 30,000 characters for writing</li><li>Your own dedicated URL</li><li>Links, contact information and calls to action</li><li>A public view counter</li></ul><a class="btn" href="https://coolcarguy.com/register-vendor">Create a $7 Parking Spot</a></div>
+<div class="pt n"><h3>Push one spot further</h3><p style="margin:10px 0"><b class="u">$49 Video Spotlight.</b> A finished 3 to 5 minute video you provide and he approves, published through @TheCoolCarGuy on YouTube and Rumble with links back to your spot.</p><p><b class="u">$25 StoryDrive™ 1000.</b> A commitment to 1,000 additional recorded views for one active, eligible Parking Spot.</p></div></div></div></section>
+
+<section id="earn"><div class="wrap"><h2>Want to do what he’s doing?</h2><p class="lede">The Affiliate Program is free to apply for and approval is required. You do not have to buy a Parking Spot to become an affiliate. You earn 20% on a direct qualifying $7 sale, and you can get paid again when the same customer buys more.</p>
+<div class="tiers wide" role="img" aria-label="Commission levels 20, 15, 10, 5 and 5 percent"><div style="height:100%">20%</div><div style="height:75%">15%</div><div style="height:50%">10%</div><div style="height:30%">5%</div><div style="height:30%">5%</div></div>
+<p style="margin-top:18px"><b class="u">Build it. Show it. Sell it. Duplicate it.</b></p><p style="margin:14px 0 0"><a class="btn" href="https://www.coolcarguy.com/affiliate-registration/">Apply to the affiliate program</a></p></div></section>
+
+<section><div class="wrap"><h2>Questions</h2>
+<details><summary>Do I need a car business?</summary><p>No. You just need something around cool cars worth building around: a car, a story, a restoration, a road trip or a business.</p></details>
+<details><summary>Does the $7 renew?</summary><p>No. A standard Parking Spot costs $7 one time, with no subscription and no scheduled expiration.</p></details>
+<details><summary>Do I build it myself?</summary><p>Yes. It is a self-service system. If you can build a Facebook post or a Marketplace ad, you can build a Parking Spot. Start with one photo and one honest line if a blank page makes your brain hurt — just make it true.</p></details>
+<details><summary>Can I use it to sell a car?</summary><p>Yes. A Parking Spot can sell, showcase, promote a business or simply be the story.</p></details></div></section>
+
+<footer class="end"><h2>Park the car.</h2><a class="btn" href="https://coolcarguy.com/register-vendor">Create a $7 Parking Spot</a>
+<div class="flinks"><a class="ext" href="https://www.youtube.com/@thecoolcarguy">YouTube @TheCoolCarGuy</a><a class="ext" href="https://x.com/coolcarguy">X</a><a class="ext" href="https://www.linkedin.com/in/coolcarguy/">LinkedIn</a><a class="ext" href="http://www.carsfreak.com">CarsFreak.com</a><a class="ext" href="https://www.coolcarguy.com/terms-and-conditions-notice/">Terms</a><a class="ext" href="https://www.coolcarguy.com/privacy-policy/">Privacy</a></div>
+<p class="foot">Cool Car Guy™ Where Cool Cars Meet The Income Engine. Copyright 2026 Cool Car Guy, Inc. Redesign concept.</p></footer>
+<script>window.CCG_SAMPLE=true;</script><script>(function(){
+var U="https://www.coolcarguy.com/wp-content/uploads/",L="https://www.coolcarguy.com/coolcars/";
+var CAT=["Creators & Storytellers","Showcase Only"];
+// [title, category, location, price label, added, image, car color, bg, spec tags, url, sort key]
+var D=[
+["2015–2020 Subaru WRX vs. WRX STI: Rally Legends You Can Still Buy for Under $25K!","Creators & Storytellers","Las Cruces, New Mexico","","Oct 23, 2026","2026/05/65_FordFalcon_CA.jpg","#1b4fd8","#cfe0ff",["Subaru","Rally","Under $25K","Commentary"],"2015-2020-subaru-wrx-vs-wrx-sti-rally-legends-you-can-still-buy-for-under-25k/",20261023],
+["2014–2016 BMW M235i Coupe: 320 HP of Turbocharged Fun for Under $20K!","Creators & Storytellers","Las Cruces, New Mexico","","Oct 22, 2026","2026/06/Graffiti_GTS.jpg","#0f8b8d","#c9f3ee",["BMW","320 HP","Under $20K","Commentary"],"2014-2016-bmw-m235i-coupe-320-hp-of-turbocharged-fun-for-under-20k/",20261022],
+["I Found My Wife a $74,000 Porsche for Around $40,000. Getting It Home Was the Hard Part.","Showcase Only","Riverside, California","≈ $40K","Aug 18, 2026","2026/08/Macan.17.jpeg","#ff5a1f","#ffe0cf",["Porsche Macan","Road trip","$74K car"],"i-bought-my-wife-a-74000-porsche-for-around-40000-getting-it-home-was-the-hard-part/",20260818],
+["When a Porsche Macan S Hitched a Ride on a Flatbed Tow Truck at a Rest Area in New Mexico","Creators & Storytellers","Socorro, New Mexico","","Jun 22, 2026","2026/06/Macan.Tow_.Graffiti.jpg","#7b2cbf","#e8d7f7",["Porsche","Flatbed","Commentary"],"when-a-porsche-macan-s-hitched-a-ride-on-a-flatbed-tow-truck-at-a-rest-area-in-new-mexico/",20260622],
+["Happy Parking Spot: Matte Red Porsche 911 GTS Spotted At Starbucks","Creators & Storytellers","Las Cruces, New Mexico","","Jun 8, 2026","2026/06/Graffiti_GTS.jpg","#c1121f","#ffd9dc",["Porsche 911 GTS","Matte red","Commentary"],"happy-parking-spot-matte-red-porsche-911-gts-spotted-at-starbucks/",20260608],
+["THE FALCOON: Police Chases, First Dates & a Crushed Quarter Panel","Creators & Storytellers","California","","May 28, 2026","2026/05/65_FordFalcon_CA.jpg","#3a506b","#dbe5ec",["Ford Falcon","Story","Commentary"],"the-falcoon-police-chases-first-dates-a-crushed-quarter-panel/",20260528],
+["1996 BMW 7 Series: Tupac’s $1.75 Million Mystery Machine","Creators & Storytellers","The Cool Car Guy Island","$1.75M","Featured","","#e9a000","#fff1cc",["BMW 7 Series","1996","Tupac"],"1996-bmw-7-series-tupacs-1-75-million-mystery-machine/",20260101]];
+var cur="All",q=document.getElementById("q"),grid=document.getElementById("grid"),so=document.getElementById("sort"),tools=document.getElementById("tools");
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+["All"].concat(CAT).forEach(function(c){var b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",c=="All");b.onclick=function(){cur=c;[].forEach.call(tools.querySelectorAll(".chip"),function(x){x.setAttribute("aria-pressed",x.textContent==c)});draw()};tools.insertBefore(b,so)});
+function draw(){var t=q.value.trim().toLowerCase(),R=D.filter(function(d){return(cur=="All"||d[1]==cur)&&(!t||(d[0]+d[2]+d[8].join(" ")+d[1]).toLowerCase().indexOf(t)>=0)});
+R.sort(function(a,b){return so.value=="az"?a[0].localeCompare(b[0]):b[10]-a[10]});
+grid.innerHTML=R.length?"":'<p class="lede">Nothing parked here yet. Try another keyword.</p>';
+R.forEach(function(d){var e=document.createElement("article");e.className="card";
+e.innerHTML='<div class="ph" style="background:'+d[7]+';color:'+d[6]+'"><span class="tag">'+esc(d[1])+'</span><svg viewBox="0 0 420 130" aria-hidden="true"><use href="#car"/></svg>'+(d[5]?'<img src="'+U+d[5]+'" alt="" loading="lazy">':"")+'</div><div class="b2"><h3><a class="ext" href="'+L+d[9]+'">'+esc(d[0])+'</a></h3><div class="spec">'+d[8].map(function(s){return"<i>"+esc(s)+"</i>"}).join("")+'</div><div class="meta"><span>'+esc(d[2])+' · '+d[4]+'</span><span class="price">'+d[3]+'</span></div></div>';
+var im=e.querySelector("img");if(im)im.onerror=function(){if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace(/(\.\w+)$/,"-400x300$1")}else this.remove()};
+e.onmousemove=function(ev){var r=e.getBoundingClientRect(),x=(ev.clientX-r.left)/r.width-.5,y=(ev.clientY-r.top)/r.height-.5;e.style.transform="perspective(700px) rotateY("+x*6+"deg) rotateX("+-y*6+"deg)"};e.onmouseleave=function(){e.style.transform=""};
+grid.appendChild(e)})}
+q.oninput=draw;so.onchange=draw;
+function go(){draw();document.getElementById("feed").scrollIntoView({behavior:"smooth"})}
+document.getElementById("ask").onsubmit=function(e){e.preventDefault();go()};
+var sg=document.getElementById("sug");["Tupac","Porsche","Rally","BMW","Subaru"].forEach(function(s){var b=document.createElement("button");b.type="button";b.textContent=s;b.onclick=function(){q.value=s;go()};sg.appendChild(b)});
+var m=["Collector cars","Race cars","Exotics","Muscle cars","Auctions","$5,000 oddballs","Formula 1","Drifting","Rally","Road trips","Builders","Stories"],h="";for(var k=0;k<2;k++)m.forEach(function(x){h+="<span>"+x+"</span><span>✦</span>"});document.getElementById("mq").innerHTML=h;
+var hc=document.getElementById("hc");document.querySelector(".hero").onmousemove=function(e){var x=e.clientX/innerWidth-.5;hc.firstChild.style.transform="translateX(calc(-50% + "+x*40+"px))"};
+var io=new IntersectionObserver(function(en){en.forEach(function(x){if(!x.isIntersecting)return;var el=x.target,n=+el.dataset.n,p0=el.dataset.p||"",s=performance.now();(function f(t){var p=Math.min(1,(t-s)/1200);el.textContent=p0+Math.round(n*(1-Math.pow(1-p,3))).toLocaleString();if(p<1)requestAnimationFrame(f)})(s);io.unobserve(el)})});
+document.querySelectorAll("[data-n]").forEach(function(n){io.observe(n)});
+document.addEventListener("click",function(e){if(!window.CCG_SAMPLE)return;var a=e.target.closest("a");if(a){var h=a.getAttribute("href")||"";if(h.charAt(0)!="#")e.preventDefault()}});
+draw();
+})();
+</script><script>(function(){var T="Sample design by Aysh · Preview only · Not for production, resale or reuse";
+function mk(){var h=document.createElement("div");h.id="aysh-lock";var r=h.attachShadow({mode:"closed"});
+r.innerHTML='<style>.w{position:fixed;inset:0;pointer-events:none;z-index:2147483646;overflow:hidden;opacity:.07;font:800 54px Arial,sans-serif;color:#888;transform:rotate(-24deg) scale(1.6);display:grid;grid-template-columns:repeat(4,1fr);gap:90px;align-content:center;white-space:nowrap}.b{position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#0d1030;color:#fff;font:600 14px/1.3 Arial,sans-serif;text-align:center;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));border-top:3px solid #ff5a1f}.b b{color:#9df5c8}</style><div class="w">'+Array(24).join("<span>AYSH SAMPLE</span>")+'</div><div class="b">'+T.replace("Aysh","<b>Aysh</b>")+'</div>';
+document.body.appendChild(h);return h}
+var el=mk();
+function ok(){if(!document.body.contains(el))return false;var s=getComputedStyle(el);return s.display!="none"&&s.visibility!="hidden"&&s.opacity=="1"&&el.getAttribute("style")==null}
+function fix(){if(!ok()){try{el.remove()}catch(e){}el=mk()}}
+new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true,attributes:true});setInterval(fix,700)})();</script></body></html>

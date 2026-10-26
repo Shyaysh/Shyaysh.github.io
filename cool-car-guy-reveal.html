@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cool Car Guy Island — a 3D car reveal concept. Parking Spots for cool cars, stories and events. $7, once, yours.">
+<meta name="theme-color" content="#07090d">
+<title>Cool Car Guy Island — 3D Car Reveal Concept (Sample)</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800;900&family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090d; --panel:#0e1219; --panel2:#141a25; --line:#232c40;
+  --accent:#f5b301; --accent2:#ffcf4d; --red:#e10600;
+  --txt:#eef1f6; --mut:#98a4ba;
+  --display:"Archivo","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --glow:rgba(245,179,1,.35);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--body);font-size:16.5px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.kicker{font-family:var(--display);font-size:.72rem;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--accent2)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ============ TOP BAR ============ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;background:rgba(7,9,13,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.wordmark{font-family:var(--display);font-weight:900;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;line-height:1.1}
+.wordmark span{color:var(--accent)}
+.grabpill{display:inline-flex;align-items:center;white-space:nowrap;flex:0 0 auto;min-height:44px;padding:10px 20px;border-radius:999px;background:linear-gradient(180deg,var(--accent2),var(--accent));color:#171106;font-weight:800;font-size:.9rem;text-decoration:none;box-shadow:0 8px 26px var(--glow);transition:transform .2s}
+.grabpill:active{transform:scale(.96)}
+
+/* ============ STAGE HERO ============ */
+.stage{position:relative;padding-top:76px;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:
+  radial-gradient(900px 420px at 50% 30%,rgba(255,255,255,.06),transparent 60%),
+  radial-gradient(700px 300px at 50% 88%,var(--glow),transparent 65%),
+  linear-gradient(180deg,#0a0d13 0%,#07090d 70%)}
+.spotcone{position:absolute;top:-12%;left:50%;transform:translateX(-50%);width:min(880px,140vw);height:75%;background:linear-gradient(180deg,rgba(255,244,200,.14),rgba(255,244,200,0) 70%);clip-path:polygon(42% 0,58% 0,88% 100%,12% 100%);pointer-events:none}
+.carwrap{position:relative;width:min(880px,94vw);margin:0 auto}
+.giantword{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);z-index:1;font-family:var(--display);font-weight:900;font-size:clamp(3.4rem,13.5vw,11rem);letter-spacing:.02em;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.13);white-space:nowrap;pointer-events:none;user-select:none;transition:opacity .3s}
+.stagecar{position:relative;z-index:3;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;box-shadow:0 40px 90px rgba(0,0,0,.65),0 0 90px var(--glow)}
+.floor{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:92%;height:60px;background:radial-gradient(50% 100% at 50% 50%,var(--glow),transparent 70%);filter:blur(10px);pointer-events:none}
+.shutter{position:absolute;top:0;bottom:0;width:50.5%;background:#05070a;z-index:8;display:none}
+.shutter.l{left:0;border-right:1px solid var(--line)} .shutter.r{right:0;border-left:1px solid var(--line)}
+html.js .shutter{display:block;animation:shut 1.15s cubic-bezier(.77,0,.18,1) .15s forwards}
+html.js .shutter.r{animation-name:shutR}
+@keyframes shut{to{transform:translateX(-101%)}}
+@keyframes shutR{to{transform:translateX(101%)}}
+html.js .stagecar{animation:reveal 1.25s cubic-bezier(.22,.8,.24,1) .35s both}
+@keyframes reveal{from{clip-path:inset(0 50% 0 50%);transform:scale(1.12);opacity:.4}to{clip-path:inset(0 0 0 0);transform:scale(1);opacity:1}}
+.stagecar.swap{animation:reveal .8s cubic-bezier(.22,.8,.24,1) both}
+.stagehead{position:relative;z-index:5;text-align:center;padding:20px 20px 6px;text-shadow:0 2px 16px rgba(0,0,0,.6)}
+.stagehead h1{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(1.7rem,5.4vw,3.2rem);line-height:1.05;letter-spacing:.01em}
+.stagehead h1 em{font-style:normal;color:var(--accent)}
+.stagehead p{color:var(--mut);margin-top:8px;font-size:1rem}
+
+/* controls */
+.controls{position:relative;z-index:5;padding:18px 20px calc(20px + env(safe-area-inset-bottom));max-width:1200px;margin:0 auto;width:100%}
+.switcher{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.switcher button{min-height:48px;padding:11px 20px;border-radius:999px;border:1.5px solid var(--line);background:rgba(14,18,25,.8);color:var(--txt);font-family:var(--body);font-weight:700;font-size:.92rem;cursor:pointer;transition:all .2s}
+.switcher button.on{border-color:var(--accent);color:var(--accent2);box-shadow:0 0 0 1px var(--accent),0 8px 22px var(--glow)}
+.switcher button:active{transform:scale(.96)}
+.swatches{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:14px}
+.swatches .lbl{font-size:.72rem;letter-spacing:.24em;font-weight:800;color:var(--mut);font-family:var(--display)}
+.swatch{width:44px;height:44px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;padding:0;transition:transform .15s}
+.swatch.on{border-color:#fff;transform:scale(1.12)}
+.specbar{margin:18px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:0;border:1px solid var(--line);border-radius:14px;background:rgba(14,18,25,.85);overflow:hidden;max-width:860px}
+.spec{flex:1 1 33%;min-width:108px;padding:10px 8px;text-align:center;border-right:1px solid var(--line)}
+.spec:last-child{border-right:none}
+.spec .k{font-size:.64rem;letter-spacing:.22em;color:var(--mut);font-weight:800;font-family:var(--display);text-transform:uppercase}
+.spec .v{font-family:var(--display);font-weight:800;font-size:1.02rem;margin-top:2px;font-variant-numeric:tabular-nums}
+.spec .v.price{color:var(--accent2)}
+.specbar.tick .v{animation:tick .45s ease}
+@keyframes tick{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+.scrollcue{text-align:center;color:var(--mut);font-size:.78rem;letter-spacing:.26em;font-weight:800;font-family:var(--display);margin-top:16px;text-transform:uppercase}
+.scrollcue::after{content:"↓";display:block;font-size:1.1rem;color:var(--accent2);animation:bob 1.8s ease infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ============ SCENES ============ */
+.scene{padding:96px 0 8px}
+.scenehead{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+.sceneno{font-family:var(--display);font-weight:900;font-size:clamp(2rem,6vw,3.4rem);color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+.scenehead h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(1.4rem,4.4vw,2.3rem);line-height:1.1}
+.scenehead p{color:var(--mut);width:100%}
+.machine{display:grid;gap:22px;align-items:center;margin-bottom:64px}
+.machine .ph{position:relative;overflow:hidden;border-radius:16px}
+.machine .ph img{width:100%;aspect-ratio:16/10;object-fit:cover;transform:scale(1.12);will-change:transform}
+.machine .idx{position:absolute;top:10px;left:16px;font-family:var(--display);font-weight:900;font-size:clamp(3rem,9vw,5.5rem);color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.35);line-height:1}
+.machine .tag{position:absolute;top:16px;right:16px;background:var(--accent);color:#171106;font-weight:800;font-size:.78rem;padding:6px 12px;border-radius:8px;transform:rotate(-2deg);box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.machine h3{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(1.25rem,3.6vw,1.9rem);line-height:1.15}
+.machine .one{color:var(--mut);margin-top:8px;max-width:46ch}
+.machine .price{font-family:var(--display);font-weight:900;font-size:1.7rem;color:var(--accent2);margin-top:12px;font-variant-numeric:tabular-nums}
+.machine .cue{display:inline-block;margin-top:10px;font-weight:800;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:3px}
+@media(min-width:900px){.machine{grid-template-columns:1.25fr 1fr}.machine.flip .ph{order:2}}
+
+/* spot panel */
+.spotpanel{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:20px;padding:30px 26px;position:relative;overflow:hidden}
+.spotpanel::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.014) 0 10px,transparent 10px 20px);pointer-events:none}
+.spotprice{font-family:var(--display);font-weight:900;font-size:clamp(3rem,10vw,5.2rem);line-height:1;color:var(--accent2)}
+.spotpanel h3{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(1.3rem,4vw,2rem);margin-top:6px}
+.speclist{list-style:none;margin:22px 0;display:grid;gap:0}
+@media(min-width:760px){.speclist{grid-template-columns:1fr 1fr;column-gap:34px}}
+.speclist li{display:flex;justify-content:space-between;gap:14px;padding:11px 2px;border-bottom:1px dashed var(--line);font-size:.98rem}
+.speclist li b{font-family:var(--display);letter-spacing:.04em;text-align:right;font-variant-numeric:tabular-nums}
+.addons{display:grid;gap:14px;margin-top:8px}
+@media(min-width:760px){.addons{grid-template-columns:1fr 1fr}}
+.addon{border:1px solid var(--line);border-radius:14px;padding:18px;background:rgba(7,9,13,.5)}
+.addon .p{font-family:var(--display);font-weight:900;font-size:1.5rem;color:var(--accent2)}
+.addon h4{font-family:var(--display);text-transform:uppercase;font-size:.95rem;margin:2px 0 4px}
+.addon p{color:var(--mut);font-size:.92rem}
+.affil{margin-top:20px;text-align:center;color:var(--mut);font-size:.95rem}
+.affil b{color:var(--accent2);font-family:var(--display);letter-spacing:.03em}
+
+/* stories */
+.pillars{display:grid;gap:16px}
+@media(min-width:820px){.pillars{grid-template-columns:repeat(3,1fr)}}
+.pillar{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--panel)}
+.pillar .n{font-family:var(--display);font-weight:900;font-size:2.6rem;color:transparent;-webkit-text-stroke:1.5px var(--accent);line-height:1}
+.pillar h3{font-family:var(--display);text-transform:uppercase;font-size:1.1rem;margin:10px 0 6px}
+.pillar p{color:var(--mut);font-size:.95rem}
+
+/* finale */
+.finale{margin-top:96px;text-align:center;padding:70px 20px 10px;background:radial-gradient(700px 320px at 50% 0%,var(--glow),transparent 65%)}
+.finale .quote{font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,4.6vw,2.2rem);line-height:1.3;max-width:22ch;margin:14px auto 0;text-transform:uppercase}
+.finale .who{color:var(--mut);margin-top:16px}
+.finale .who b{color:var(--txt)}
+.bigcta{display:inline-flex;align-items:center;justify-content:center;min-height:58px;margin-top:28px;padding:16px 38px;border-radius:999px;background:linear-gradient(180deg,var(--accent2),var(--accent));color:#171106;font-weight:900;font-family:var(--display);letter-spacing:.05em;font-size:1.05rem;text-decoration:none;box-shadow:0 16px 40px var(--glow);text-transform:uppercase}
+.bigcta:active{transform:scale(.97)}
+.contacts{margin-top:26px;color:var(--mut);font-size:.95rem;line-height:1.9}
+.contacts a{color:var(--accent2);text-decoration:none;font-weight:700}
+footer{margin-top:70px;border-top:1px solid var(--line);padding:28px 20px 44px;text-align:center;color:var(--mut);font-size:.85rem;line-height:1.7}
+
+/* reveal on scroll */
+.rv{opacity:1}
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.8,.24,1)}
+html.js .rv.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html.js .rv{opacity:1;transform:none}
+  .shutter{display:none!important}
+}
+
+:focus-visible{outline:2.5px solid var(--accent2);outline-offset:3px;border-radius:6px}
+.searchbox{margin:6px 0 20px}
+.searchbox input{width:100%;min-height:58px;background:var(--panel);border:1.5px solid var(--line);border-radius:14px;color:var(--txt);font-family:var(--body);font-size:1.05rem;padding:14px 18px}
+.searchbox input::placeholder{color:var(--mut)}
+.searchgrid{display:grid;gap:12px}
+@media(min-width:760px){.searchgrid{grid-template-columns:1fr 1fr}}
+.spotcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.spotcard h4{font-family:var(--display);text-transform:uppercase;letter-spacing:.03em;font-size:.98rem}
+.spotcard .cat{color:var(--accent2);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.spotcard .pr{font-family:var(--display);color:var(--accent);font-weight:900;white-space:nowrap}
+.searchnone{color:var(--mut);display:none;padding:8px 2px}
+
+/* ===== TYPE RESTYLE — not plain: serif-italic accents + gold gradient ===== */
+.stagehead h1 em{font-family:var(--serif);font-style:italic;font-weight:600;text-transform:none;letter-spacing:0;font-size:1.12em;background:linear-gradient(92deg,var(--accent2) 10%,var(--accent) 55%,#c07f00 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stagehead p{font-family:var(--serif);font-style:italic;font-size:1.13rem;color:#c8d2e2}
+.stagehead .kicker,.finale .kicker{display:inline-flex;align-items:center;gap:12px}
+.stagehead .kicker::before,.stagehead .kicker::after,.finale .kicker::before,.finale .kicker::after{content:"";width:34px;height:1.5px;background:linear-gradient(90deg,transparent,var(--accent))}
+.stagehead .kicker::after,.finale .kicker::after{background:linear-gradient(90deg,var(--accent),transparent)}
+.scenehead h2{position:relative;padding-bottom:12px}
+.scenehead h2::after{content:"";position:absolute;left:2px;bottom:0;width:72px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--accent),rgba(245,179,1,0))}
+.scenehead p{font-family:var(--serif);font-style:italic;font-size:1.06rem;color:#aeb9cd}
+.machine .one{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:#aeb9cd}
+.machine .price,.spotprice,.addon .p{background:linear-gradient(92deg,var(--accent2) 5%,var(--accent) 60%,#c07f00);-webkit-background-clip:text;background-clip:text;color:transparent}
+.spotpanel h3{font-family:var(--serif);font-style:italic;text-transform:none;font-weight:600;letter-spacing:.01em}
+.finale .quote{font-family:var(--serif);font-style:italic;text-transform:none;font-weight:600;letter-spacing:.005em}
+.giantword{-webkit-text-fill-color:rgba(255,255,255,.045)}
+.wordmark span{font-family:var(--serif);font-style:italic;text-transform:none;font-size:1.08em;letter-spacing:0}
+.spec .v.price{background:linear-gradient(92deg,var(--accent2),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="wordmark">The Cool Car Guy <span>— Island</span></div>
+  <a class="grabpill" href="#spot">Grab a Spot — $7</a>
+</div>
+
+<!-- ============ STAGE HERO ============ -->
+<header class="stage" id="stage">
+  <div class="spotcone"></div>
+  <div class="shutter l"></div><div class="shutter r"></div>
+  <div class="carwrap">
+  <div class="giantword" id="giantWord">MUSTANG</div>
+  <div class="floor"></div>
+  <div class="stagehead">
+    <div class="kicker">Now showing on the Island</div>
+    <h1>Cool cars are too big<br>for a <em>classified site.</em></h1>
+    <p>So this isn't one. Pick a machine — the stage is yours.</p>
+  </div>
+  <img fetchpriority="high" class="stagecar" id="stageCar" src="https://www.coolcarguy.com/wp-content/uploads/2025/10/SilentGarage_Mustang.jpg" alt="1967 Mustang Fastback restomod on stage">
+  </div>
+  <div class="controls">
+    <div class="switcher" role="group" aria-label="Choose a car">
+      <button type="button" data-car="mustang" class="on">🐎 1967 Mustang</button>
+      <button type="button" data-car="hellcat">😈 Hellcat Redeye</button>
+      <button type="button" data-car="porsche">🏁 Porsche 911</button>
+    </div>
+    <div class="swatches" role="group" aria-label="Stage color">
+      <span class="lbl">STAGE</span>
+      <button type="button" class="swatch on" data-accent="gold" style="background:#f5b301" aria-label="Gold"></button>
+      <button type="button" class="swatch" data-accent="red" style="background:#e10600" aria-label="Red"></button>
+      <button type="button" class="swatch" data-accent="steel" style="background:#9fb4c8" aria-label="Steel"></button>
+      <button type="button" class="swatch" data-accent="midnight" style="background:#5b7fff" aria-label="Midnight"></button>
+    </div>
+    <div class="specbar" id="specBar">
+      <div class="spec"><div class="k">Year · Model</div><div class="v" id="spModel">1967 Fastback</div></div>
+      <div class="spec"><div class="k">Engine</div><div class="v" id="spEngine">390 V8</div></div>
+      <div class="spec"><div class="k">Power</div><div class="v" id="spPower">320 HP</div></div>
+      <div class="spec"><div class="k">Gearbox</div><div class="v" id="spGear">4-Speed Manual</div></div>
+      <div class="spec"><div class="k">Price</div><div class="v price" id="spPrice">$68,000</div></div>
+    </div>
+    <div class="scrollcue">Scene 02 — The Machines</div>
+  </div>
+</header>
+
+<!-- ============ SCENE 02 — THE MACHINES ============ -->
+<section class="scene wrap" id="machines">
+  <div class="scenehead rv"><div class="sceneno">02</div><div><h2>The Machines</h2><p>For Sale · Make Offer · Exchange · Showcase Only — every car gets its own stage.</p></div></div>
+
+  <article class="machine rv">
+    <div class="ph"><img loading="lazy" decoding="async" data-plx src="https://www.coolcarguy.com/wp-content/uploads/2025/10/SilentGarage_Mustang.jpg" alt="1967 Mustang Fastback restomod"><span class="idx">01</span><span class="tag">For Sale</span></div>
+    <div><h3>1967 Mustang Fastback — Restomod</h3><p class="one">The classic, rebuilt to be driven. Big-block soul, modern manners.</p><div class="price">$68,000</div><a class="cue" href="#spot">Park this →</a></div>
+  </article>
+
+  <article class="machine flip rv">
+    <div class="ph"><img loading="lazy" decoding="async" data-plx src="https://www.coolcarguy.com/wp-content/uploads/2025/10/Future_Hellcat.jpg" alt="Hellcat Redeye"><span class="idx">02</span><span class="tag">For Sale</span></div>
+    <div><h3>Hellcat Redeye</h3><p class="one">797 horsepower of questionable life choices — and proud of it.</p><div class="price">$92,300</div><a class="cue" href="#spot">Park this →</a></div>
+  </article>
+
+  <article class="machine rv">
+    <div class="ph"><img loading="lazy" decoding="async" data-plx src="https://www.coolcarguy.com/wp-content/uploads/2025/10/CoolCarGuy_Porsche.jpeg" alt="Porsche 911 Carrera"><span class="idx">03</span><span class="tag">For Sale</span></div>
+    <div><h3>Porsche 911 Carrera</h3><p class="one">The Island favorite — flat-six, precise, done right.</p><div class="price">$124,500</div><a class="cue" href="#spot">Park this →</a></div>
+  </article>
+
+  <article class="machine flip rv">
+    <div class="ph"><img loading="lazy" decoding="async" data-plx src="https://www.coolcarguy.com/wp-content/uploads/2025/01/CCG_Header4_800-1200x686.jpeg" alt="1996 BMW 7 Series — the Tupac car"><span class="idx">04</span><span class="tag">Showcase · Story</span></div>
+    <div><h3>1996 BMW 7 Series — The Tupac Car</h3><p class="one">The $1.75 million mystery machine. Not just a car — the story the whole Island searches for. Type “Tupac”, find it in one.</p><div class="price">$1,750,000</div><a class="cue" href="#stories">Read the story →</a></div>
+  </article>
+</section>
+
+<!-- ============ SCENE 03 — THE SPOT ============ -->
+<section class="scene wrap" id="spot">
+  <div class="scenehead rv"><div class="sceneno">03</div><div><h2>The Spot</h2><p>One page. Your car, your story, your price. Sold at the counter, not buried in a paragraph.</p></div></div>
+  <div class="spotpanel rv">
+    <div class="kicker">The Parking Spot</div>
+    <div class="spotprice">$7</div>
+    <h3>Once. Yours.</h3>
+    <ul class="speclist">
+      <li><span>Your own page + dedicated URL</span><b>Included</b></li>
+      <li><span>Photos</span><b>Up to 25</b></li>
+      <li><span>Embedded videos</span><b>Up to 2</b></li>
+      <li><span>Room to tell the story</span><b>30,000 characters</b></li>
+      <li><span>Public view counter</span><b>Included</b></li>
+      <li><span>Links, contact info, calls to action</span><b>Included</b></li>
+      <li><span>Subscription</span><b>None</b></li>
+      <li><span>Renewal / expiration</span><b>Never</b></li>
+    </ul>
+    <div class="addons">
+      <div class="addon"><div class="p">$49</div><h4>Video Spotlight</h4><p>Your 3–5 minute video, published through @TheCoolCarGuy on YouTube and Rumble, linked back to your Spot.</p></div>
+      <div class="addon"><div class="p">$25</div><h4>StoryDrive™ 1000</h4><p>1,000 additional recorded views for one active Spot that's already picking up speed.</p></div>
+    </div>
+    <p class="affil">Sell Spots too — the affiliate program pays <b>20% → 15% → 10% → 5% → 5%</b> on every sale.</p>
+  </div>
+</section>
+
+
+<!-- ============ SCENE 04 — SEARCH THE ISLAND ============ -->
+<section class="scene wrap" id="search">
+  <div class="scenehead rv"><div class="sceneno">04</div><div><h2>Search the Island</h2><p>One keyword finds the car, the story, the Spot. Try it — type TUPAC.</p></div></div>
+  <div class="searchbox rv"><input type="search" id="spotSearch" placeholder="Search a car, person, story or keyword…" aria-label="Search the Island"></div>
+  <div class="searchgrid rv" id="spotGrid">
+    <div class="spotcard" data-find="1996 bmw 7 series tupac mystery machine story showcase"><div><div class="cat">Showcase · Story</div><h4>1996 BMW 7 Series — The Tupac Car</h4></div><div class="pr">$1,750,000</div></div>
+    <div class="spotcard" data-find="1967 ford mustang fastback restomod for sale classic"><div><div class="cat">For Sale</div><h4>1967 Mustang Fastback — Restomod</h4></div><div class="pr">$68,000</div></div>
+    <div class="spotcard" data-find="hellcat redeye dodge future concept for sale muscle"><div><div class="cat">For Sale</div><h4>Hellcat Redeye</h4></div><div class="pr">$92,300</div></div>
+    <div class="spotcard" data-find="porsche 911 carrera sports car for sale"><div><div class="cat">For Sale</div><h4>Porsche 911 Carrera</h4></div><div class="pr">$124,500</div></div>
+  </div>
+  <p class="searchnone" id="spotNone">Nothing parked under that word yet — try “tupac”, “mustang” or “porsche”.</p>
+</section>
+
+<!-- ============ SCENE 05 — THE STORIES ============ -->
+<section class="scene wrap" id="stories">
+  <div class="scenehead rv"><div class="sceneno">05</div><div><h2>Why It Works</h2><p>Three things make this world interesting. The Island is built around all three.</p></div></div>
+  <div class="pillars">
+    <div class="pillar rv"><div class="n">01</div><h3>The Machines</h3><p>Classics, exotics, muscle, restomods and $5,000 oddballs. If it's interesting, it parks here.</p></div>
+    <div class="pillar rv"><div class="n">02</div><h3>The People</h3><p>Collectors, racers, builders, creators and dealers — the people who can't leave cool cars alone.</p></div>
+    <div class="pillar rv"><div class="n">03</div><h3>The Stories</h3><p>Auctions, road trips, restorations and bad decisions with four wheels attached. That's where the fun starts.</p></div>
+  </div>
+</section>
+
+<!-- ============ FINALE — MEET THE MANAGER ============ -->
+<section class="finale">
+  <div class="kicker">The Manager's Office</div>
+  <p class="quote">“The cars are what's cool. I'm just the guy who connects people with them.”</p>
+  <p class="who"><b>John M Boyd</b> — President, The Cool Car Guy · Bernalillo, New Mexico</p>
+  <a class="bigcta" href="mailto:jboyd@coolcarguy.com?subject=Grab%20a%20Spot">Grab a Spot — $7</a>
+  <div class="contacts">
+    <a href="mailto:jboyd@coolcarguy.com">jboyd@coolcarguy.com</a> · <a href="tel:+17207716269">720-771-6269</a><br>
+    P.O. Box 621, Bernalillo, NM 87004<br>
+    @TheCoolCarGuy on YouTube &amp; Rumble · @coolcarguy on X
+  </div>
+</section>
+
+<footer>
+  <b>Free sample redesign concept</b> built for CoolCarGuy.com — a “3D Car Reveal” design direction.<br>
+  Sample listings and prices shown for demonstration; not the live CoolCarGuy.com website.
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- hero car data (mirrors the Scene 02 showroom rows) ---------- */
+  var CARS = {
+    mustang: { word:'MUSTANG', img:'https://www.coolcarguy.com/wp-content/uploads/2025/10/SilentGarage_Mustang.jpg', alt:'1967 Mustang Fastback restomod on stage', model:'1967 Fastback', engine:'390 V8', power:'320 HP', gear:'4-Speed Manual', price:'$68,000' },
+    hellcat: { word:'HELLCAT', img:'https://www.coolcarguy.com/wp-content/uploads/2025/01/Hellcat.2-1.jpeg', alt:'Hellcat Redeye on stage', model:'Redeye Widebody', engine:'6.2L Supercharged V8', power:'797 HP', gear:'8-Speed Automatic', price:'$92,300' },
+    porsche: { word:'PORSCHE', img:'https://www.coolcarguy.com/wp-content/uploads/2025/10/CoolCarGuy_Porsche.jpeg', alt:'Porsche 911 Carrera on stage', model:'911 Carrera', engine:'3.0L Twin-Turbo Flat-6', power:'379 HP', gear:'8-Speed PDK', price:'$124,500' }
+  };
+  var carImg = document.getElementById('stageCar');
+  var giant = document.getElementById('giantWord');
+  var specBar = document.getElementById('specBar');
+  var fields = { model:document.getElementById('spModel'), engine:document.getElementById('spEngine'), power:document.getElementById('spPower'), gear:document.getElementById('spGear'), price:document.getElementById('spPrice') };
+
+  document.querySelectorAll('[data-car]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var c = CARS[btn.getAttribute('data-car')]; if(!c) return;
+      document.querySelectorAll('[data-car]').forEach(function(b){ b.classList.toggle('on', b===btn); });
+      giant.style.opacity = '0';
+      setTimeout(function(){
+        carImg.src = c.img; carImg.alt = c.alt; giant.textContent = c.word; giant.style.opacity = '1';
+        fields.model.textContent = c.model; fields.engine.textContent = c.engine;
+        fields.power.textContent = c.power; fields.gear.textContent = c.gear; fields.price.textContent = c.price;
+        carImg.classList.remove('swap'); void carImg.offsetWidth; carImg.classList.add('swap');
+        specBar.classList.remove('tick'); void specBar.offsetWidth; specBar.classList.add('tick');
+      }, reduced ? 0 : 180);
+    });
+  });
+
+  /* ---------- paint swatches: re-accent the stage ---------- */
+  var ACCENTS = {
+    gold:     { a:'#f5b301', a2:'#ffcf4d', glow:'rgba(245,179,1,.35)',  f:'none' },
+    red:      { a:'#e10600', a2:'#ff5a4d', glow:'rgba(225,6,0,.35)',    f:'saturate(1.15)' },
+    steel:    { a:'#9fb4c8', a2:'#d7e5f2', glow:'rgba(159,180,200,.30)', f:'saturate(.75) brightness(1.05)' },
+    midnight: { a:'#5b7fff', a2:'#9db4ff', glow:'rgba(91,127,255,.35)', f:'hue-rotate(-12deg) saturate(1.05)' }
+  };
+  document.querySelectorAll('[data-accent]').forEach(function(sw){
+    sw.addEventListener('click', function(){
+      var t = ACCENTS[sw.getAttribute('data-accent')]; if(!t) return;
+      var r = document.documentElement.style;
+      r.setProperty('--accent', t.a); r.setProperty('--accent2', t.a2); r.setProperty('--glow', t.glow);
+      carImg.style.filter = t.f;
+      document.querySelectorAll('[data-accent]').forEach(function(b){ b.classList.toggle('on', b===sw); });
+    });
+  });
+
+  /* ---------- scroll reveals ---------- */
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.12 });
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* ---------- parallax drift on showroom photos (transform only) ---------- */
+  if(!reduced){
+    var plx = Array.prototype.slice.call(document.querySelectorAll('[data-plx]'));
+    var ticking = false;
+    function drift(){
+      ticking = false;
+      var vh = window.innerHeight;
+      plx.forEach(function(img){
+        var r = img.parentElement.getBoundingClientRect();
+        if(r.bottom < 0 || r.top > vh) return;
+        var p = (r.top + r.height/2 - vh/2) / vh; /* -0.5 .. 0.5 */
+        img.style.transform = 'scale(1.12) translateY(' + (p * -18).toFixed(1) + 'px)';
+      });
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(drift); } }, { passive:true });
+    drift();
+  }
+})();
+</script>
+<noscript><style>.shutter{display:none!important}.rv{opacity:1!important;transform:none!important}</style></noscript>
+
+<script>
+(function(){
+  var inp=document.getElementById('spotSearch'), none=document.getElementById('spotNone');
+  var cards=Array.prototype.slice.call(document.querySelectorAll('#spotGrid .spotcard'));
+  inp.addEventListener('input',function(){
+    var q=inp.value.trim().toLowerCase(), shown=0;
+    cards.forEach(function(c){ var hit=!q||c.getAttribute('data-find').indexOf(q)>-1; c.style.display=hit?'flex':'none'; if(hit)shown++; });
+    none.style.display=shown?'none':'block';
+  });
+})();
+</script>
+</body>
+</html>
