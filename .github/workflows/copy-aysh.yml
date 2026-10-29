@@ -1,0 +1,19 @@
+name: Copy AYSH page
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy aysh-services.html to aysh/index.html
+        run: |
+          mkdir -p aysh
+          cp aysh-services.html aysh/index.html
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add aysh/index.html
+          git commit -m "Add short AYSH page at /aysh" || exit 0
+          git push
