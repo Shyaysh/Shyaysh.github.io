@@ -53,8 +53,10 @@
     }
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  html{scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip;max-width:100%}
+  img{max-width:100%}
+  .svc,.rev,.proof,.stat,.contact-item,.field,.hero-grid>*,.proof-grid>*,.svc-grid>*,.rev-grid>*{min-width:0}
   h1,h2,h3{font-family:"Bricolage Grotesque","Manrope",sans-serif;line-height:1.12;margin:0}
   a{color:var(--teal)}
   .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
@@ -230,6 +232,103 @@
   @media (max-width:560px){.contact-item{min-width:0;flex:1 1 100%}}
   footer{margin-top:70px;border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:13.5px}
   footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* ---------- Mobile (phones up to 760px) ---------- */
+  @media (max-width:760px){
+    .wrap{padding:0 16px}
+    section{padding:44px 0 4px}
+    .sec-head{margin-bottom:22px}
+    .sec-head p{font-size:15.5px}
+
+    /* Nav: brand on its own row, links spread evenly on a second row */
+    .nav-in{flex-wrap:wrap;gap:6px 10px;padding:10px 0 8px}
+    .nav-name{font-size:18px}
+    .nav-links{order:3;flex:1 1 100%;width:100%;margin-left:0;display:flex;flex-wrap:nowrap;gap:2px}
+    .nav-links a{flex:1 1 0;text-align:center;display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 2px;font-size:13.5px;white-space:nowrap}
+
+    /* Hero */
+    .hero{padding-top:16px}
+    .hero-panel{padding:26px 20px;border-radius:20px}
+    .avail{max-width:100%;flex-wrap:wrap;line-height:1.4;padding:7px 12px;font-size:13px;margin-bottom:16px}
+    .avail i{flex:none}
+    .hero h1{font-size:clamp(46px,15vw,64px)}
+    .hero .role{font-size:16.5px;margin-top:12px;overflow-wrap:break-word}
+    .hero .lede{font-size:15.5px;margin-top:12px}
+    .hero-ctas{flex-direction:column;align-items:stretch;gap:10px;margin-top:24px}
+    .hero-ctas .btn{width:100%;max-width:100%;justify-content:center;text-align:center;min-height:50px;white-space:normal;overflow-wrap:anywhere}
+    .hero-img{border-radius:14px}
+
+    /* Stats: tidy 2x2 with uniform number size */
+    .stats{gap:10px;margin-top:16px}
+    .stat{padding:14px 12px}
+    .stat b{font-size:27px;min-height:32px}
+    .stat b em{font-size:19px}
+    .stat>span{font-size:14px}
+
+    /* Marquee stays clipped inside its own strip */
+    .marquee{max-width:100%;margin-top:26px}
+    .marquee-track span{font-size:14px;padding:0 14px}
+    .marquee-track span i{padding-right:28px}
+
+    /* Services: single column, everything wraps inside the card */
+    .svc{padding:20px 18px}
+    .svc h3{font-size:18px}
+    .svc p,.svc .check-list{font-size:14.5px}
+    .check-list li{overflow-wrap:break-word}
+    .price-tags{gap:6px}
+    .ptag{max-width:100%;flex-wrap:wrap;white-space:normal;overflow-wrap:anywhere;line-height:1.4}
+    .bundle-note{padding:14px 16px;font-size:14.5px}
+
+    /* Work proof */
+    .proof{padding:20px 18px}
+    .proof .big{font-size:32px;overflow-wrap:anywhere}
+    .proof .big small{display:block;margin-top:4px}
+    .tag{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+
+    /* Reviews */
+    .rev-summary{padding:18px;gap:12px 18px}
+    .rev-summary .score{font-size:38px}
+    .rev{padding:20px 18px}
+    .rev .top{flex-wrap:wrap;row-gap:4px}
+    .rev .nofb{white-space:normal}
+    .rev blockquote,.rev .noquote{overflow-wrap:break-word}
+    .rev .foot .tag{font-size:12.5px}
+
+    /* Leave a Review form: 16px inputs (no auto-zoom), big tap targets */
+    .review-side{padding:26px 20px}
+    .review-side h2{font-size:24px}
+    .review-form{padding:22px 18px}
+    .field input[type=text],.field input[type=email],.field select,.field textarea{font-size:16px;padding:13px;min-height:48px}
+    .field input[type=file]{width:100%;max-width:100%;font-size:16px}
+    .star-pick{gap:4px;flex-wrap:wrap}
+    .star-pick button{min-width:48px;min-height:48px;font-size:34px;display:grid;place-items:center;padding:4px}
+    #reviewForm button[type=submit]{width:100%;min-height:52px;justify-content:center;font-size:16px}
+
+    /* Contact: boxes stack full width, buttons full width */
+    .contact-card{padding:28px 18px}
+    .contact-details{flex-direction:column;flex-wrap:nowrap;gap:10px}
+    .contact-item{width:100%;min-width:0;flex:none;padding:12px 16px}
+    .contact-row{flex-direction:column;align-items:stretch;gap:10px}
+    .contact-row .btn{width:100%;max-width:100%;justify-content:center;text-align:center;min-height:50px;white-space:normal;overflow-wrap:anywhere}
+
+    /* Footer stacks without overflow */
+    footer{margin-top:52px}
+    footer .wrap{flex-direction:column;gap:6px}
+
+    /* Comfortable tap targets everywhere */
+    .btn{min-height:48px}
+  }
+
+  /* ---------- Small phones (up to 400px) ---------- */
+  @media (max-width:400px){
+    .nav-name{font-size:17px}
+    .nav-links a{font-size:13px}
+    .hero-panel{padding:24px 16px}
+    .hero h1{font-size:46px}
+    .stat b{font-size:25px}
+    .proof .big{font-size:29px}
+    .rev-summary .score{font-size:34px}
+  }
 
   @media (prefers-reduced-motion: reduce){
     *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
