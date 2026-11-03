@@ -1,0 +1,25 @@
+name: Sync AYSH prices
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sync AYSH files
+        run: |
+          cp aysh-services-nov3.html aysh-services.html
+          mkdir -p aysh
+          cp aysh-services-nov3.html aysh/index.html
+          git rm aysh-services-nov3.html
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Sync AYSH Services prices (Nov 3)"
+            git push
+          fi
