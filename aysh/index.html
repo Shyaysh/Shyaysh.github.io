@@ -109,6 +109,14 @@
   .avail{display:inline-flex;align-items:center;gap:8px;background:rgba(163,230,53,.13);color:#c9f27e;font-weight:800;font-size:13.5px;border:1px solid rgba(163,230,53,.35);border-radius:999px;padding:6px 14px;margin-bottom:20px}
   .avail i{width:9px;height:9px;border-radius:50%;background:#a3e635;display:inline-block;animation:pulse 1.8s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(163,230,53,.55)}50%{box-shadow:0 0 0 7px rgba(163,230,53,0)}}
+  .hero-badges{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:20px;max-width:100%}
+  .hero-badges .avail{margin-bottom:0}
+  .wau-pill{display:inline-flex;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(163,230,53,.35);border-radius:999px;padding:4px 10px;max-width:100%;flex-wrap:wrap;line-height:1}
+  .wau-pill[hidden]{display:none!important}
+  .wau-widget{display:inline-flex;align-items:center;line-height:1;min-width:0;max-width:100%}
+  .wau-widget img{display:block;max-width:100%;height:auto}
+  .wau-widget a{display:inline-flex;align-items:center;line-height:1}
+  .wau-widget iframe{max-width:100%}
   .hero h1{font-size:clamp(58px,10vw,104px);font-weight:800;letter-spacing:1px;line-height:.98}
   .hero .role{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(16px,2.4vw,21px);color:#cfe5d6;margin-top:16px}
   .hero .lede{color:#aec6b6;font-size:17px;margin:16px 0 0;max-width:52ch}
@@ -251,6 +259,11 @@
     .hero-panel{padding:26px 20px;border-radius:20px}
     .avail{max-width:100%;flex-wrap:wrap;line-height:1.4;padding:7px 12px;font-size:13px;margin-bottom:16px}
     .avail i{flex:none}
+    .hero-badges{gap:8px;margin-bottom:16px}
+    .hero-badges .avail{margin-bottom:0}
+    .wau-pill{max-width:100%;flex-wrap:wrap;padding:4px 8px}
+    .wau-widget{max-width:100%;min-width:0}
+    .wau-widget img{max-width:100%;height:auto}
     .hero h1{font-size:clamp(46px,15vw,64px)}
     .hero .role{font-size:16.5px;margin-top:12px;overflow-wrap:break-word}
     .hero .lede{font-size:15.5px;margin-top:12px}
@@ -362,7 +375,72 @@
       <div class="blob blob-3" aria-hidden="true"></div>
       <div class="hero-grid">
         <div>
-          <span class="avail"><i></i> Available for new projects</span>
+          <div class="hero-badges">
+            <span class="avail"><i></i> Available for new projects</span>
+            <div class="wau-pill" id="wauPill" hidden>
+              <span class="wau-widget" id="wauWidget"><script id="_wau___">var _wau = _wau || []; _wau.push(["dynamic", "ab5pkkmkwf", "___", "c4302bffffff", "small"]);</script><script async src="https://waust.at/d.js"></script></span>
+            </div>
+          </div>
+          <script>
+          (function(){
+            var pill = document.getElementById('wauPill');
+            var widget = document.getElementById('wauWidget');
+            if(!pill || !widget) return;
+            var started = Date.now();
+            function textWithoutScripts(node){
+              var t = '';
+              for(var i = 0; i < node.childNodes.length; i++){
+                var c = node.childNodes[i];
+                if(c.nodeType === 3) t += c.textContent;
+                else if(c.nodeType === 1 && c.tagName !== 'SCRIPT' && c.tagName !== 'STYLE') t += textWithoutScripts(c);
+              }
+              return t;
+            }
+            function hasMedia(root){
+              var imgs = root.querySelectorAll('img');
+              for(var i = 0; i < imgs.length; i++){ if(imgs[i].src) return true; }
+              if(root.querySelector('iframe, svg, canvas')) return true;
+              return false;
+            }
+            function hasBadge(){
+              if(hasMedia(widget)) return true;
+              var links = widget.querySelectorAll('a');
+              for(var j = 0; j < links.length; j++){
+                if(links[j].querySelector('img') || /\d/.test(textWithoutScripts(links[j]))) return true;
+              }
+              var nodes = widget.querySelectorAll('span, div, strong, b, em, small');
+              for(var k = 0; k < nodes.length; k++){
+                if(/\d/.test(textWithoutScripts(nodes[k]))) return true;
+              }
+              for(var m = 0; m < widget.childNodes.length; m++){
+                var n = widget.childNodes[m];
+                if(n.nodeType === 1 && n.tagName !== 'SCRIPT'){
+                  if((n.querySelector && n.querySelector('img')) || /\d/.test(textWithoutScripts(n))) return true;
+                }
+                if(n.nodeType === 3 && /\d/.test(n.textContent || '')) return true;
+              }
+              /* Fallback: badge inserted elsewhere inside the pill (media/link only) */
+              if(hasMedia(pill)) return true;
+              var pillLinks = pill.querySelectorAll('a');
+              for(var p = 0; p < pillLinks.length; p++){
+                if(pillLinks[p].querySelector('img') || /\d/.test(textWithoutScripts(pillLinks[p]))) return true;
+              }
+              return false;
+            }
+            var timer = setInterval(function(){
+              if(hasBadge()){
+                clearInterval(timer);
+                pill.hidden = false;
+                pill.removeAttribute('hidden');
+                pill.classList.add('is-on');
+                return;
+              }
+              if(Date.now() - started >= 10000){
+                clearInterval(timer);
+              }
+            }, 250);
+          })();
+          </script>
           <h1><span class="grad-text">AYSH</span></h1>
           <p class="role">Discord Community Manager · UGC Creator Recruitment · Virtual Assistant</p>
           <p class="lede">I help agencies, brands and creators grow real communities — recruiting UGC creators into Discord servers, managing and moderating communities day to day, and keeping members active and engaged. Working with clients worldwide since 2019.</p>
